@@ -1,0 +1,8 @@
+.bg-color {
+  background: #335fff;
+  background: radial-gradient(
+    circle,
+    rgba(51, 95, 255, 1) 0%,    
+    rgb(33, 2, 99) 100%
+  );        
+}
