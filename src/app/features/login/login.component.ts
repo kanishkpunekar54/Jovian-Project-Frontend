@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Add this import
+import { FormsModule } from '@angular/forms'; 
 import { AuthService } from '../../core/auth.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [FormsModule] // Add FormsModule here
+  imports: [FormsModule,NgIf] 
 })
 export class LoginComponent {
   email = '';
@@ -19,11 +20,9 @@ export class LoginComponent {
     if (this.email && this.password) {
       this.authService.login(this.email, this.password).subscribe({
         next: (res) => {
-          // handle success (e.g., navigate, show message)
           console.log('Login successful', res);
         },
         error: (err) => {
-          // handle error (e.g., show error message)
           console.error('Login failed', err);
         },
       });
