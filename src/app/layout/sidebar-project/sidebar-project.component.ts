@@ -1,0 +1,29 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MatListModule } from '@angular/material/list';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NgClass, NgIf } from '@angular/common';
+
+@Component({
+  selector: 'app-sidebar-project',
+  standalone: true,
+  imports: [MatListModule, RouterLink, RouterLinkActive, NgIf, NgClass],
+  templateUrl: './sidebar-project.component.html',
+  styleUrl: './sidebar-project.component.css'
+})
+export class SidebarProjectComponent implements OnInit {
+  collapsed = false;
+  projectId!: string;
+
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.projectId = params.get('id')!;
+    });
+  }
+
+  toggleSidebar() {
+    this.collapsed = !this.collapsed;
+  }
+}
