@@ -1,1 +1,34 @@
-<p>threat-modling works!</p>
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error" class="text-red-600">{{ error }}</div>
+<div *ngIf="threatDetails">
+  <h2>Info Details</h2>
+  <div>
+    <strong>Name:</strong> {{ threatDetails.info.name }}<br />
+    <strong>Repo Name:</strong> {{ threatDetails.info.repoName }}<br />
+  </div>
+
+  <h3>Threats</h3>
+  <ul>
+    <li *ngFor="let threat of threatDetails.threats">
+      {{ threat.name }} - {{ threat.description }}
+    </li>
+  </ul>
+
+  <h3>Diagrams</h3>
+  <div *ngFor="let diagram of threatDetails.threatDiagrams">
+    <div *ngIf="diagram.sequenceDiagram">
+      <strong>Sequence Diagram:</strong><br />
+      <img
+        [src]="'data:image/png;base64,' + diagram.sequenceDiagram"
+        alt="Sequence Diagram"
+      />
+    </div>
+    <div *ngIf="diagram.flowDiagram">
+      <strong>Flow Diagram:</strong><br />
+      <img
+        [src]="'data:image/png;base64,' + diagram.flowDiagram"
+        alt="Flow Diagram"
+      />
+    </div>
+  </div>
+</div>

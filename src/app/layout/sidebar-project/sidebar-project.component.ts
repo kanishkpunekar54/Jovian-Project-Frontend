@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -13,14 +13,10 @@ import { NgClass, NgIf } from '@angular/common';
 })
 export class SidebarProjectComponent implements OnInit {
   collapsed = false;
-  projectId!: string;
-
-  constructor(private route: ActivatedRoute) { }
-
+  projectId: string | null = null;
+  
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.projectId = params.get('id')!;
-    });
+    this.projectId = localStorage.getItem('currentProjectId');
   }
 
   toggleSidebar() {

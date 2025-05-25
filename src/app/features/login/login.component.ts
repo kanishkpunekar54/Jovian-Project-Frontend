@@ -23,6 +23,8 @@ export class LoginComponent {
     if (this.email && this.password) {
       this.authService.login(this.email, this.password).subscribe({
         next: (res) => {
+          // Assuming res.actorId is returned from backend
+          localStorage.setItem('actorId', res.actorId);
           this.router.navigate(['/home']);
         },
         error: (err) => {
