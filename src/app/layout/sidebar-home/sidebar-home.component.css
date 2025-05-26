@@ -1,0 +1,6 @@
+/* Add any custom styles if needed, but Tailwind covers most needs */
+:host {
+  height: 100vh;
+  display: block;
+}
+    

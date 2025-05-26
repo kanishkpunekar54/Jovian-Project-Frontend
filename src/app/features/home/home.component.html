@@ -1,0 +1,13 @@
+<p>home works!</p>
+<ul>
+  <li *ngFor="let info of infoList">
+    {{ info.name }}
+    {{ info.repoName }}
+    <a
+      [routerLink]="['/', info.id, 'report']"
+      (click)="setCurrentProjectId(info.id)"
+      class="text-violet-700 underline ml-2"
+      >View Report</a
+    >
+  </li>
+</ul>
